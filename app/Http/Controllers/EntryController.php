@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Entry;
+use App\Project;
+
 class EntryController extends Controller
 {
     public function __construct()
@@ -9,13 +12,24 @@ class EntryController extends Controller
         $this->middleware('auth');
     }
 
-    public function start()
+    public function start(Project $project)
     {
-        // TODO: Implement starting new entry
+	    Entry::create([
+		    'project_id' => $project->id,
+	    ]);
+		return response()->json($project->entries);
     }
 
-    public function stop()
+    public function stop(Project $project)
     {
-        // TODO: Implement stopping entry
+		$entry = $project->entries()->whereNull('end')->first();
+		if(!$entry){
+			abort(422, 'No started entry found');
+		}
+		
+		$entry->end = now();
+		$entry->save();
+		
+		return response()->json($project->entries);
     }
 }

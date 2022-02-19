@@ -1945,20 +1945,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Project",
-  props: ['project'],
-  data: function data() {
-    return {
-      running: false
-    };
+  name: 'Project',
+  props: {
+    project: Object
+  },
+  computed: {
+    running: function running() {
+      return !!this.project.entries.find(function (entry) {
+        return !entry.end;
+      });
+    }
   },
   methods: {
     startTimer: function startTimer() {
-      this.running = true; // TODO: Implement start functionality
+      axios.post("/projects/".concat(this.project.id, "/entries/start")).then(function (response) {
+        window.location.reload();
+      });
     },
     stopTimer: function stopTimer() {
-      this.running = false; // TODO: Implement stop functionality
+      axios.post("/projects/".concat(this.project.id, "/entries/stop")).then(function (response) {
+        window.location.reload();
+      });
     }
   }
 });
@@ -37822,7 +37832,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Stop")]
+              [_vm._v("Stop\n          ")]
             ),
             _vm._v(" "),
             _c(
@@ -37845,7 +37855,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("Start")]
+              [_vm._v("Start\n          ")]
             )
           ])
         ])
@@ -37863,9 +37873,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", { domProps: { textContent: _vm._s(entry.end) } }),
             _vm._v(" "),
-            _c("td", [
-              _vm._v("\n                    0 hours\n                ")
-            ])
+            _c("td", [_vm._v("\n        0 hours\n      ")])
           ])
         }),
         0

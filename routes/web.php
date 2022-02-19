@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/projects', 'ProjectController')->only([
 	'show', 'store', 'update', 'destroy'
 ]);;
+Route::post('/projects/{project}/entries/start', 'EntryController@start');
+Route::post('/projects/{project}/entries/stop', 'EntryController@stop');
 
 Route::fallback(function(){
     return redirect('login');
