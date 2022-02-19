@@ -26,10 +26,7 @@
         <tr v-for="project in projects">
           <td v-text="project.name"></td>
           <td v-text="project.entries.length"></td>
-          <td>
-            <!-- TODO: Calculate total hours spent -->
-            0
-          </td>
+          <td v-text="project.total_time_spent"></td>
           <td class="text-right">
             <button type="button" class="btn btn-sm btn-dark" @click.prevent="editProject(project)">Edit</button>
             <button type="button" class="btn btn-sm btn-danger" @click.prevent="deleteProject(project)">Delete</button>

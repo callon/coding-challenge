@@ -1944,9 +1944,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Project',
   props: {
@@ -1985,9 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpsertProject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpsertProject */ "./resources/js/components/UpsertProject.vue");
-//
-//
-//
 //
 //
 //
@@ -37873,7 +37867,7 @@ var render = function() {
             _vm._v(" "),
             _c("td", { domProps: { textContent: _vm._s(entry.end) } }),
             _vm._v(" "),
-            _c("td", [_vm._v("\n        0 hours\n      ")])
+            _c("td", { domProps: { textContent: _vm._s(entry.time_spent) } })
           ])
         }),
         0
@@ -37960,7 +37954,9 @@ var render = function() {
                   domProps: { textContent: _vm._s(project.entries.length) }
                 }),
                 _vm._v(" "),
-                _c("td", [_vm._v("\n          0\n        ")]),
+                _c("td", {
+                  domProps: { textContent: _vm._s(project.total_time_spent) }
+                }),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-right" }, [
                   _c(

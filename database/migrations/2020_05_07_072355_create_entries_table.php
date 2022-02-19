@@ -17,6 +17,7 @@ class CreateEntriesTable extends Migration
             $table->id();
             $table->dateTime('start');
             $table->dateTime('end')->nullable();
+			$table->integer('time_spent')->default(0);
             $table->unsignedBigInteger('project_id');
             $table->timestamps();
         });

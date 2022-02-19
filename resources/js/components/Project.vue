@@ -27,10 +27,7 @@
       <tr v-for="entry in project.entries">
         <td v-text="entry.start"></td>
         <td v-text="entry.end"></td>
-        <td>
-          <!-- TODO: Calculate time spent -->
-          0 hours
-        </td>
+        <td v-text="entry.time_spent"></td>
       </tr>
       </tbody>
     </table>
