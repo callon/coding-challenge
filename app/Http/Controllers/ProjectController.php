@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Projects\StoreRequest;
+use App\Http\Requests\Projects\UpdateRequest;
 use App\Project;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -17,20 +18,21 @@ class ProjectController extends Controller
         $project = Project::with('entries')->find($projectID);
         return view('projects.show', ['project' => $project]);
     }
-
-    public function add(Request $request)
+	
+    public function store(StoreRequest $request)
     {
-        Project::create([
-            'name' => $request->get('name')
-        ]);
+        Project::create($request->validated());
         return response()->json(['status' => 'success']);
     }
 
-    public function update(Request $request)
+    public function update(UpdateRequest $request, Project $project)
     {
-        $project = Project::find($request->get('id'));
-        $project->name = $request->get('name');
-        $project->save();
+        $project->update($request->validated());
         return response()->json(['status' => 'success']);
     }
+	
+	public function destroy(Project $project){
+		$project->delete();
+		return response()->json(['status' => 'success']);
+	}
 }

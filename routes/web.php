@@ -20,8 +20,9 @@ Route::get('/', function () {
 });
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/projects/{id}', 'ProjectController@show');
-Route::post('/projects/add', 'ProjectController@add');
+Route::resource('/projects', 'ProjectController')->only([
+	'show', 'store', 'update', 'destroy'
+]);;
 
 Route::fallback(function(){
     return redirect('login');
