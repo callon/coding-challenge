@@ -1944,6 +1944,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Project',
   props: {
@@ -1982,6 +1985,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UpsertProject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpsertProject */ "./resources/js/components/UpsertProject.vue");
+//
+//
+//
 //
 //
 //
@@ -37861,16 +37867,28 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.project.entries, function(entry) {
-          return _c("tr", [
-            _c("td", { domProps: { textContent: _vm._s(entry.start) } }),
-            _vm._v(" "),
-            _c("td", { domProps: { textContent: _vm._s(entry.end) } }),
-            _vm._v(" "),
-            _c("td", { domProps: { textContent: _vm._s(entry.time_spent) } })
-          ])
-        }),
-        0
+        [
+          _vm._l(_vm.project.entries, function(entry) {
+            return _c("tr", [
+              _c("td", { domProps: { textContent: _vm._s(entry.start) } }),
+              _vm._v(" "),
+              _c("td", { domProps: { textContent: _vm._s(entry.end) } }),
+              _vm._v(" "),
+              _c("td", { domProps: { textContent: _vm._s(entry.time_spent) } })
+            ])
+          }),
+          _vm._v(" "),
+          _vm.project.entries.length === 0
+            ? _c("tr", [
+                _c(
+                  "td",
+                  { staticClass: "text-center", attrs: { colspan: "3" } },
+                  [_vm._v("No entries yet..")]
+                )
+              ])
+            : _vm._e()
+        ],
+        2
       )
     ])
   ])
@@ -37946,61 +37964,73 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.projects, function(project) {
-              return _c("tr", [
-                _c("td", { domProps: { textContent: _vm._s(project.name) } }),
-                _vm._v(" "),
-                _c("td", {
-                  domProps: { textContent: _vm._s(project.entries.length) }
-                }),
-                _vm._v(" "),
-                _c("td", {
-                  domProps: { textContent: _vm._s(project.total_time_spent) }
-                }),
-                _vm._v(" "),
-                _c("td", { staticClass: "text-right" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-dark",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.editProject(project)
-                        }
-                      }
-                    },
-                    [_vm._v("Edit")]
-                  ),
+            [
+              _vm._l(_vm.projects, function(project) {
+                return _c("tr", [
+                  _c("td", { domProps: { textContent: _vm._s(project.name) } }),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-danger",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.deleteProject(project)
-                        }
-                      }
-                    },
-                    [_vm._v("Delete")]
-                  ),
+                  _c("td", {
+                    domProps: { textContent: _vm._s(project.entries.length) }
+                  }),
                   _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-secondary",
-                      attrs: { href: "/projects/" + project.id }
-                    },
-                    [_vm._v("Details")]
-                  )
+                  _c("td", {
+                    domProps: { textContent: _vm._s(project.total_time_spent) }
+                  }),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-dark",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.editProject(project)
+                          }
+                        }
+                      },
+                      [_vm._v("Edit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.deleteProject(project)
+                          }
+                        }
+                      },
+                      [_vm._v("Delete")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-secondary",
+                        attrs: { href: "/projects/" + project.id }
+                      },
+                      [_vm._v("Details")]
+                    )
+                  ])
                 ])
-              ])
-            }),
-            0
+              }),
+              _vm._v(" "),
+              _vm.projects.length === 0
+                ? _c("tr", [
+                    _c(
+                      "td",
+                      { staticClass: "text-center", attrs: { colspan: "4" } },
+                      [_vm._v("No projects yet...")]
+                    )
+                  ])
+                : _vm._e()
+            ],
+            2
           )
         ])
       ]),

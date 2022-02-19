@@ -29,6 +29,9 @@
         <td v-text="entry.end"></td>
         <td v-text="entry.time_spent"></td>
       </tr>
+      <tr v-if="project.entries.length === 0">
+        <td class="text-center" colspan="3">No entries yet..</td>
+      </tr>
       </tbody>
     </table>
   </div>

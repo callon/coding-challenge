@@ -33,6 +33,9 @@
             <a :href="`/projects/${project.id}`" class="btn btn-sm btn-secondary">Details</a>
           </td>
         </tr>
+        <tr v-if="projects.length === 0">
+          <td class="text-center" colspan="4">No projects yet...</td>
+        </tr>
         </tbody>
       </table>
     </div>
